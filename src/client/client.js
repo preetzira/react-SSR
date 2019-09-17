@@ -1,6 +1,16 @@
 // Entry poiny for client
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Home from './components/Home'
+import { BrowserRouter } from 'react-router-dom'
+import Router from './Routes'
+// import { history } from 'history/createBrowserHistory'
 
-ReactDOM.hydrate(<Home />,document.querySelector('#root'))
+const Routes = () => {
+    return (
+        <BrowserRouter>
+            <Router />
+        </BrowserRouter>
+    )
+}
+
+ReactDOM.hydrate(<Routes />,document.querySelector('#root'))

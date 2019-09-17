@@ -1,6 +1,9 @@
 const path = require('path')
+const merge = require('webpack-merge')
+const baseConfig = require('./webpack.base')
+const webpackNodeExternals = require('webpack-node-externals')
 
-module.exports = {
+const config = {
     //inform webpack that it will work for nodejs
     target:"node",
 
@@ -14,21 +17,6 @@ module.exports = {
         path:path.resolve(__dirname,'build')
     },
 
-    //make webpack use babel to transpile
-    module:{
-        rules:[
-            {
-                test:/.js$/,
-                loader:'babel-loader',
-                exclude : /node_modules/,
-                options:{
-                    presets:[
-                        'react',
-                        'stage-0',
-                        ['env',{ targets : { browsers : ['last 2 versions'] }}]
-                    ]
-                }
-            }
-        ]
-    }
+    externals: [webpackNodeExternals()]
 }
+module.exports = merge(baseConfig, config)
