@@ -2,17 +2,20 @@ import React from 'react';
 import { renderToString } from 'react-dom/server' 
 import Router from '../client/Routes'
 import { StaticRouter } from 'react-router-dom'
+import { Provider } from 'react-redux'
 
-const Routes = (req) => {
+const Routes = (props) => {
     return (
-        <StaticRouter location={req.path} context={{}}>
-            <Router />
-        </StaticRouter>
+        <Provider store={props.store}>
+            <StaticRouter location={props.url} context={{}}>
+                <Router />
+            </StaticRouter>
+        </Provider>
     )
 }
 
-export default () => {
-    const content = renderToString(<Routes />)
+export default (url,store) => {
+    const content = renderToString(<Routes url={url} store={store} />)
     const html = `
         <html>
             <head>

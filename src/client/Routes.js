@@ -13,11 +13,9 @@ class Gome extends React.Component {
 
 export default () => {
     return (
-        <div>
-            <Switch>
-                <Route exact path="/" component={Home} />
-                <Route path="/apple" component={Gome} />
-            </Switch>
-        </div>
+        <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/apple" component={Gome} />
+        </Switch>
     )
 }
