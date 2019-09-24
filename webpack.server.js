@@ -2,13 +2,14 @@ const path = require('path')
 const merge = require('webpack-merge')
 const baseConfig = require('./webpack.base')
 const webpackNodeExternals = require('webpack-node-externals')
+require("@babel/polyfill")
 
 const config = {
     //inform webpack that it will work for nodejs
     target:"node",
 
     //this is the root file of the server
-    entry:"./src/index.js",
+    entry:["@babel/polyfill","./src/index.js"],
 
 
     // where to create the output file
